@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import Chart from 'chart.js/auto';
+import {ServiceService} from "../service.service";
 @Component({
   selector: 'app-pie-chart',
   templateUrl: './pie-chart.component.html',
   styleUrls: ['./pie-chart.component.css']
 })
 export class PieChartComponent implements OnInit {
+  @Input() response: any;
 
   chart: any ;
   constructor() { }
@@ -15,15 +17,16 @@ export class PieChartComponent implements OnInit {
   }
 
   createChart(){
+    const data = Object.values(this.response.probabilities);
     this.chart = new Chart("MyChart", {
       type: 'bar', //this denotes tha type of chart
 
       data: {// values on X-Axis
-        labels: ['Libyan','Tunisian','Algerian ','Mococcan' ], 
+        labels: ['Libyan','Algerian','Mococcan', 'Tunisian'],
 	       datasets: [
           {
             label: "Probability",
-            data: ['2','89', '5', '4'],
+            data: data,
             backgroundColor: 'blue'
           }
         ]
@@ -31,7 +34,7 @@ export class PieChartComponent implements OnInit {
       options: {
         aspectRatio:1
       }
-      
+
     });
   }
 }

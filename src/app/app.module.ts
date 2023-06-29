@@ -6,6 +6,8 @@ import { LogoComponent } from './logo/logo.component';
 import { HomeComponent } from './home/home.component';
 import { ResponseComponent } from './response/response.component';
 import { PieChartComponent } from './pie-chart/pie-chart.component';
+import {HttpClientModule} from "@angular/common/http";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { PieChartComponent } from './pie-chart/pie-chart.component';
     PieChartComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
